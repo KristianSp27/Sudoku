@@ -28,6 +28,13 @@ function setGame() {
       tile.innerText = board[r][c];
       if (board[r][c] != "-") {
         tile.innerText = board[r][c];
+        tile.classList.add("tile-start");
+      }
+      if (r == 2 || r == 5) {
+        tile.classList.add("horizontal-line");
+      }
+      if (c == 2 || c == 5) {
+        tile.classList.add("vertical-line");
       }
       tile.classList.addEventListener("click", selectTile);
       tile.classList.add("tile");
