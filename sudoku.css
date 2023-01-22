@@ -54,3 +54,15 @@ align-items: center;
 .number-selected {
     background-color: grey;
 }
+
+.tile-start {
+    background-color: whitesmoke;
+}
+
+.horizontal-line {
+    border-bottom: 1px solid black;
+}
+
+.vertical-line {
+    border-right: 1px solid black;
+}
