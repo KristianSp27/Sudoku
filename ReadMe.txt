@@ -1,0 +1,1 @@
+Attempting to make a Sudoku. What you see now is the first functional version. Improvements to it will be added as time goes on.
