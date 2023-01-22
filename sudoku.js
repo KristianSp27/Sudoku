@@ -16,16 +16,39 @@ function setGame() {
     const number = document.createElement("div");
     number.id = i;
     number.innerText = i;
+    number.addEventListener("click", selectNumber);
     number.classList.add("number");
     document.getElementById("digits").appendChild(number);
   }
-
+  // Board 9x9
   for (let r = 0; r < 9; r++) {
     for (let c = 0; c < array.length; c++) {
       let tile = document.createElement("div");
       tile.id = r.toString() + "-" + c.toString;
+      tile.innerText = board[r][c];
+      if (board[r][c] != "-") {
+        tile.innerText = board[r][c];
+      }
+      tile.classList.addEventListener("click", selectTile);
       tile.classList.add("tile");
       document.getElementById("board").append(tile);
     }
+  }
+}
+
+function selectNumber() {
+  if (numSelected != null) {
+    numSelected.classList.remove("number-selected");
+  }
+  numSelected = this;
+  numSelected.classList.add("number-selected");
+}
+
+function selectTile() {
+  if (numSelected) {
+    if (this.innerText != "") {
+      return;
+    }
+    this.innerText = numSelected.id;
   }
 }
