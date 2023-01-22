@@ -12,20 +12,21 @@ window.onload = function () {
 };
 
 function setGame() {
-  for (let index = 1; index <= 9; index++) {
-    const number = document.createElement("div");
+  for (let i = 1; i <= 9; i++) {
+    //<div id="1" class="number">1</div>
+    let number = document.createElement("div");
     number.id = i;
     number.innerText = i;
     number.addEventListener("click", selectNumber);
     number.classList.add("number");
     document.getElementById("digits").appendChild(number);
   }
+
   // Board 9x9
   for (let r = 0; r < 9; r++) {
-    for (let c = 0; c < array.length; c++) {
+    for (let c = 0; c < 9; c++) {
       let tile = document.createElement("div");
-      tile.id = r.toString() + "-" + c.toString;
-      tile.innerText = board[r][c];
+      tile.id = r.toString() + "-" + c.toString();
       if (board[r][c] != "-") {
         tile.innerText = board[r][c];
         tile.classList.add("tile-start");
@@ -36,7 +37,7 @@ function setGame() {
       if (c == 2 || c == 5) {
         tile.classList.add("vertical-line");
       }
-      tile.classList.addEventListener("click", selectTile);
+      tile.addEventListener("click", selectTile);
       tile.classList.add("tile");
       document.getElementById("board").append(tile);
     }
