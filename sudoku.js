@@ -56,6 +56,16 @@ function selectTile() {
     if (this.innerText != "") {
       return;
     }
-    this.innerText = numSelected.id;
+
+    let coordinates = this.id.split("-");
+    let r = parseInt(coordinates[0]);
+    let c = parseInt(coordinates[1]);
+
+    if (solution[r][c] == numSelected.id) {
+      this.innerText = numSelected.id;
+    } else {
+      errors += 1;
+      document.getElementById("errors").innerText = errors;
+    }
   }
 }
