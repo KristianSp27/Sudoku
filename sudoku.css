@@ -97,3 +97,19 @@ nav {
     font-size: var(--font-size-lg);
     cursor: pointer;
 }
+
+.bxs-sun {
+    display: none; 
+}
+
+.bxs-moon {
+    display: inline-block;
+}
+
+.dark .bxs-sun {
+    display: inline-block;
+}
+
+.dark .bxs-moon {
+    display: none;
+}
