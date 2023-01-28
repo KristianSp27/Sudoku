@@ -69,4 +69,13 @@ function selectTile() {
       document.getElementById("errors").innerText = errors;
     }
   }
+
+  gameOutcomeContainer.innerText = message;
+  letterContainer.classList.add(...["opacity-50", "cursor-not-allowed"]);
+  //add restart button
+  const restartButton = document.createElement("button");
+  restartButton.classList.add(...["bg-blue-500", "hover:bg-blue-400", "text-white", "px-4", "p-2", "mt-4", "rounded"]);
+  restartButton.innerText = "Restart";
+  restartButton.addEventListener("click", () => window.location.reload());
+  gameOutcomeContainer.appendChild(restartButton);
 }
