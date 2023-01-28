@@ -49,4 +49,19 @@ body {
 input {
     font-family: "Potta One", cursive;
     border: 2px solid var(--bg-main);
+    color: var(--color-txt)
+}
+
+input:hover, 
+input:focus {
+border-color: var(--blue);
+}
+
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+ul {
+    list-style-type: none;
 }
