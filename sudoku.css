@@ -113,3 +113,30 @@ nav {
 .dark .bxs-moon {
     display: none;
 }
+
+.main {
+    height: 100vh;
+    padding-top: var(--nav-size);
+    display: grid;
+    place-items: center;
+}
+
+.screen {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.start-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateX(-100%);
+    transition: transform .3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
