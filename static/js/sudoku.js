@@ -7,7 +7,9 @@ document.querySelector("#dark-mode-toggle").addEventListener("click", () => {
 });
 
 const init = () => {
-  const darkMode = localStorage.getItem("darkmode");
-  document.body.classList.add(darkMode ? "dark" : "");
+  const darkMode = JSON.parse(localStorage.getItem("darkmode"));
+  document.body.classList.add(darkMode ? "dark" : "light");
   document.querySelector('meta[name = "theme-color"').setAttribute("content", darkMode ? "#1a1a2e" : "#fff");
 };
+
+init();
