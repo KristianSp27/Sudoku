@@ -6,12 +6,15 @@ document.querySelector("#dark-mode-toggle").addEventListener("click", () => {
   document.querySelector('meta[name = "theme-color"').setAttribute("content", isDarkMode ? "#1a1a2e" : "#fff");
 });
 
+//initial value
+
 const name_input = document.querySelector("#input-name");
 const start_screen = document.querySelector("#start-screen");
 
 document.querySelector("#btn-play").addEventListener("click", () => {
   if (name_input.value.trim().length > 0) {
-    alert("start game");
+    initSudoku();
+    startGame();
   } else {
     name_input.classList.add("input-err");
     setTimeout(() => {

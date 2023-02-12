@@ -1,6 +1,5 @@
 :root {
     --bg-main: #f0f2f5;
-    --bg-main: #f0f2f5;
     --bg-body: #fff;
     --color-txt: #000;
     --filled-color: #000;
@@ -100,7 +99,7 @@ nav {
 }
 
 .bxs-sun {
-    display: none; 
+    display: none;
 }
 
 .bxs-moon {
@@ -116,7 +115,7 @@ nav {
 }
 
 .main {
-    height: 100vh;
+    /* height: 100vh; */
     padding-top: var(--nav-size);
     display: grid;
     place-items: center;
@@ -136,7 +135,7 @@ nav {
     width: 100%;
     height: 100%;
     transform: translateX(-100%);
-    transition: transform .3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -153,7 +152,7 @@ nav {
 
 .input-name {
     height: 80px;
-    width : 280px;
+    width: 280px;
     border-radius: var(--border-radius);
     outline: 0;
     background-color: var(--bg-main);
@@ -170,7 +169,7 @@ nav {
     border-radius: var(--border-radius);
     display: grid;
     place-items: center;
-    transition: width .3s ease-in-out;
+    transition: width 0.3s ease-in-out;
     overflow: hidden;
     font-size: var(--font-size-lg);
     cursor: pointer;
@@ -183,17 +182,20 @@ nav {
 
 .input-err {
     border-color: var(--red);
-    animation: bounce .5s cubic-bezier(.175, cubic-bezier(0.175, 0.885, .32, 1.275));
+    animation: bounce 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 @keyframes bounce {
     0% {
         transform: translateX(0);
-    } 25% {
+    }
+    25% {
         transform: translateX(20px);
-    } 50% {
+    }
+    50% {
         transform: translateX(-20px);
-    } 100% {
+    }
+    100% {
         transform: translateX(0);
     }
 }
