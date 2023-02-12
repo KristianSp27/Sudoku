@@ -5,24 +5,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- mobile status bar color -->
+    
     <meta name="theme-color" content="#fff">
     <title>Sudoku</title>
     <link rel="shortcut icon" href="./static/images/icon.png" type="image/x-icon">
-    <!-- google font -->
+   
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
-    <!-- box icons -->
+  
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <!-- app css -->
+    
     <link rel="stylesheet" href="./sudoku.css">
 
 </head>
 
 <body>
 
-    <!-- top nav -->
+  
     <nav>
         <div class="nav-container">
             <a href="#" class="nav-logo">
@@ -34,12 +34,10 @@
             </div>
         </div>
     </nav>
-    <!-- end top nav -->
-
-    <!-- main -->
+  
     <div class="main">
         <div class="screen">
-            <!-- start screen -->
+          
             <div class="start-screen active" id="start-screen">
                 <input type="text" placeholder="Your name" maxlength="11" class="input-name" id="input-name">
                 <div class="btn" id="btn-level">
@@ -48,12 +46,10 @@
                 <div class="btn" id="btn-continue">Continue</div>
                 <div class="btn btn-blue" id="btn-play">New game</div>
             </div>
-            <!-- end start screen -->
-
-            <!-- game screen -->
+            
             <div class="main-game" id="game-screen">
                 <div class="main-sudoku-grid">
-                    <!-- 81 cells -->
+                    
                     <div class="main-grid-cell"></div>
                     <div class="main-grid-cell"></div>
                     <div class="main-grid-cell"></div>
@@ -166,26 +162,22 @@
                     <div class="delete" id="btn-delete">X</div>
                 </div>
             </div>
-            <!-- end game screen -->
-
-            <!-- pause screen -->
+       
             <div class="pause-screen" id="pause-screen">
                 <div class="btn btn-blue" id="btn-resume">Resume</div>
                 <div class="btn" id="btn-new-game">New game</div>
             </div>
-            <!-- end pause screen -->
-
-            <!-- result screen -->
+          
             <div class="result-screen" id="result-screen">
                 <div class="congrate">Competed</div>
                 <div class="info">Time</div>
                 <div id="result-time"></div>
                 <div class="btn" id="btn-new-game-2">New game</div>
             </div>
-            <!-- end result screen -->
+            
         </div>
     </div>
-    <!-- end main -->
+    
 
     <script src="./static/js/constant.js"></script>
     <script src="./static/js/sudoku.js"></script>

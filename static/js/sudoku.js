@@ -78,3 +78,90 @@ const isFullGrid = (grid) => {
     });
   });
 };
+
+const sudokuCreate = (grid) => {
+  let unassigned_pos = {
+    row: -1,
+    col: -1,
+  };
+
+  if (!findUnassignedPos(grid, unassigned_pos)) return true;
+
+  let number_list = shuffleArray([...CONSTANT.NUMBERS]);
+
+  let row = unassigned_pos.row;
+  let col = unassigned_pos.col;
+
+  number_list.forEach((num, i) => {
+    if (isSafe(grid, row, col, num)) {
+      grid[row][col] = num;
+
+      if (isFullGrid(grid)) {
+        return true;
+      } else {
+        if (sudokuCreate(grid)) {
+          return true;
+        }
+      }
+
+      grid[row][col] = CONSTANT.UNASSIGNED;
+    }
+  });
+  return isFullGrid(grid);
+};
+
+const sudokuCheck = (grid) => {
+  let unassigned_pos = {
+    row: -1,
+    col: -1,
+  };
+
+  if (!findUnassignedPos(grid, unassigned_pos)) return true;
+
+  grid.forEach((row, i) => {
+    row.forEach((num, j) => {
+      if (isSafe(grid, i, j, num)) {
+        if (isFullGrid(grid)) {
+          return true;
+        } else {
+          if (sudokuCreate(grid)) {
+            return true;
+          }
+        }
+      }
+    });
+  });
+
+  return isFullGrid(grid);
+};
+
+const rand = () => Math.floor(Math.random() * CONSTANT.GRID_SIZE);
+
+const removeCells = (grid, level) => {
+  let res = [...grid];
+  let attemps = level;
+  while (attemps > 0) {
+    let row = rand();
+    let col = rand();
+    while (res[row][col] === 0) {
+      row = rand();
+      col = rand();
+    }
+    res[row][col] = CONSTANT.UNASSIGNED;
+    attemps--;
+  }
+  return res;
+};
+
+const sudokuGen = (level) => {
+  let sudoku = newGrid(CONSTANT.GRID_SIZE);
+  let check = sudokuCreate(sudoku);
+  if (check) {
+    let question = removeCells(sudoku, level);
+    return {
+      original: sudoku,
+      question: question,
+    };
+  }
+  return undefined;
+};
