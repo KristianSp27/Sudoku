@@ -180,3 +180,10 @@ nav {
     background-color: var(--blue);
     color: var(--white);
 }
+
+.input-err {
+    border-color: var(--red);
+    animation: bounce .5s cubic-bezier(.175, cubic-bezier(0.175, 0.885, .32, 1.275));
+}
+
+
