@@ -145,3 +145,18 @@ nav {
 .start-screen.active {
     transform: translateX(0);
 }
+
+.start-screen > * + * {
+    margin-top: 20px;
+}
+
+.input-name {
+    height: 80px;
+    width : 280px;
+    border-radius: var(--border-radius);
+    outline: 0;
+    background-color: var(--bg-main);
+    padding: 20px;
+    font-size: var(--font-size-lg);
+    text-align: center;
+}
