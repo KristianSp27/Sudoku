@@ -160,3 +160,16 @@ nav {
     font-size: var(--font-size-lg);
     text-align: center;
 }
+
+.btn {
+    height: 80px;
+    width: 280px;
+    background-color: var(--bg-main);
+    color: var(--color-txt);
+    border-radius: var(--border-radius);
+    display: grid;
+    place-items: center;
+    transition: width .3s ease-in-out;
+    overflow: hidden;
+    font-size: var(--font-size-lg);
+}
