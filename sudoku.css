@@ -1,5 +1,5 @@
 :root {
-    --bg-main: #2a2a38;
+    --bg-main: #f0f2f5;
     --bg-main: #f0f2f5;
     --bg-body: #fff;
     --color-txt: #000;
@@ -173,6 +173,7 @@ nav {
     transition: width .3s ease-in-out;
     overflow: hidden;
     font-size: var(--font-size-lg);
+    cursor: pointer;
 }
 
 .btn-blue {
