@@ -11,10 +11,20 @@ document.querySelector("#dark-mode-toggle").addEventListener("click", () => {
 const name_input = document.querySelector("#input-name");
 const start_screen = document.querySelector("#start-screen");
 
+let level_index = 0;
+let level = CONSTANT.LEVEL[level_index];
+
+// -----
+
+document.querySelector("#btn-level").addEventListener("click", (e) => {
+  level_index = level_index + 1 > CONSTANT.LEVEL.length - 1 ? 0 : level_index + 1;
+  level = CONSTANT.LEVEL[level_index];
+  e.target.innerHTML = CONSTANT.LEVEL_NAME[level_index];
+});
+
 document.querySelector("#btn-play").addEventListener("click", () => {
   if (name_input.value.trim().length > 0) {
-    initSudoku();
-    startGame();
+    alert(`level => ${level}`);
   } else {
     name_input.classList.add("input-err");
     setTimeout(() => {
