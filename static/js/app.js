@@ -48,6 +48,8 @@ const getPlayerName = () => localStorage.getItem("player_name");
 
 const showTime = (seconds) => new Date(seconds * 1000).toISOString().substr(11, 8);
 
+const initSudoku = () => {};
+
 const startGame = () => {
   start_screen.classList.remove("active");
   game_screen.classList.add("active");
