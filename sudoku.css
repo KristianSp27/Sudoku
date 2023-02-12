@@ -199,3 +199,35 @@ nav {
         transform: translateX(0);
     }
 }
+
+.main-game {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 0;
+    transform: translateX(100%);
+    transition: transform .3s ease-in-out;
+}
+
+.main-game.active {
+    transform: translateX(0);
+}
+
+.main-sudoku-grid {
+    display: grid;
+    gap: var(--gap);
+    grid-template-columns: repeat(9, auto);
+}
+
+.main-grid-cell {
+    height: var(--sudoku-cell-size);
+    width: var(--sudoku-cell-size);
+    border-radius: var(--border-radius);
+    background-color: var(--bg-main);
+    color: var(--blue);
+    display: grid;
+    place-items: center;
+    font-size: var(--font-size);
+    cursor: pointer;
+}
