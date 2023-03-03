@@ -88,7 +88,7 @@ const hoverBg = (index) => {
   for (let i = 0; i < CONSTANT.BOX_SIZE; i++) {
     for (let j = 0; j < CONSTANT.BOX_SIZE; j++) {
       let cell = cells[9 * (box_start_row + i) + (box_start_col + j)];
-      cells.classList.add("hover");
+      cell.classList.add("hover");
     }
   }
 
@@ -210,6 +210,7 @@ const init = () => {
   document.querySelector("btn-continue").style.display = game ? "grid" : "none";
 
   initGameGrid();
+  initCellsEvent();
 
   if (getPlayerName()) {
     name_input.value = getPlayerName();
