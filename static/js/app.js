@@ -77,6 +77,21 @@ const initSudoku = () => {
   }
 };
 
+const hoverBg = (index) => {
+  let row = Math.floor(index / CONSTANT.GRID_SIZE);
+  let col = index % CONSTANT.GRID_SIZE;
+
+  let box_start_row = row - (row % 3);
+  let box_start_col = col - (col % 3);
+
+  for (let i = 0; i < CONSTANT.BOX_SIZE; i++) {
+    for (let j = 0; j < CONSTANT.BOX_SIZE; j++) {
+      let cell = cells[9 * (box_start_row + i) + (box_start_col + j)];
+      cells.classList.add("hover");
+    }
+  }
+};
+
 const startGame = () => {
   start_screen.classList.remove("active");
   game_screen.classList.add("active");
