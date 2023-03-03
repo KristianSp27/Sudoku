@@ -121,7 +121,7 @@ const resetBg = () => {
   cells.forEach((e) => e.classList.remove("hover"));
 };
 
-initCellsEvent = () => {
+const initCellsEvent = () => {
   cells.forEach((e, index) => {
     e.addEventListener("click", () => {
       if (!e.classList.contains("filled")) {
@@ -131,7 +131,7 @@ initCellsEvent = () => {
         e.classList.remove("err");
         e.classList.add("selected");
         resetBg();
-        hoverBg();
+        hoverBg(index);
       }
     });
   });
