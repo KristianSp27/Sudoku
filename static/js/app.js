@@ -54,6 +54,18 @@ const initSudoku = () => {
   su_answer = [...su.question];
 
   console.table(su_answer);
+
+  for (let i = 0; i < Math.pow(CONSTANT.GRID_SIZE, 2); i++) {
+    let row = Math.floor(i / CONSTANT.GRID_SIZE);
+    let col = i % CONSTANT.GRID_SIZE;
+
+    cells[i].setAttribute("data-value", su.question[row][col]);
+
+    if (su.question[row][col] !== 0) {
+      cells[i].classList.add("filled");
+      cells[i].innerHTML = su.question[row][col];
+    }
+  }
 };
 
 const startGame = () => {
@@ -94,6 +106,7 @@ document.querySelector("#btn-level").addEventListener("click", (e) => {
 
 document.querySelector("#btn-play").addEventListener("click", () => {
   if (name_input.value.trim().length > 0) {
+    initSudoku();
     startGame();
   } else {
     name_input.classList.add("input-err");
