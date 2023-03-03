@@ -30,6 +30,8 @@ let seconds = 0;
 let su = undefined;
 let su_answer = undefined;
 
+let selected_cell = -1;
+
 const gateGameInfo = () => JSON.parse(localStorage.getItem("game"));
 
 const initGameGrid = () => {
@@ -39,7 +41,8 @@ const initGameGrid = () => {
     let row = Math.floor(i / CONSTANT.GRID_SIZE);
     let col = i % CONSTANT.GRID_SIZE;
     if (row === 2 || row === 5) cells[index].style.marginBottom = "10px";
-    if (col === 2 || col === 5) cells[index].style.marginBottom = "10px";
+    if (col === 2 || col === 5) cells[index].style.marginRight = "10px";
+
     index++;
   }
 };
@@ -60,10 +63,13 @@ const clearSudoku = () => {
 const initSudoku = () => {
   clearSudoku();
   resetBg();
+
   su = sudokuGen(level);
   su_answer = [...su.question];
 
-  console.table(su_answer);
+  seconds = 0;
+
+  saveGameInfo();
 
   for (let i = 0; i < Math.pow(CONSTANT.GRID_SIZE, 2); i++) {
     let row = Math.floor(i / CONSTANT.GRID_SIZE);
@@ -74,6 +80,32 @@ const initSudoku = () => {
     if (su.question[row][col] !== 0) {
       cells[i].classList.add("filled");
       cells[i].innerHTML = su.question[row][col];
+    }
+  }
+};
+
+const loadSudoku = () => {
+  let game = getGameInfo();
+
+  game_level.innerHTML = CONSTANT.LEVEL_NAME[game.level];
+
+  su = game.su;
+
+  su_answer = su.answer;
+
+  seconds = game.seconds;
+  game_time.innerHTML = showTime(seconds);
+
+  level_index = game.level;
+
+  for (let i = 0; i < Math.pow(CONSTANT.GRID_SIZE, 2); i++) {
+    let row = Math.floor(i / CONSTANT.GRID_SIZE);
+    let col = i % CONSTANT.GRID_SIZE;
+
+    cells[i].setAttribute("data-value", su_answer[row][col]);
+    cells[i].innerHTML = su_answer[row][col] !== 0 ? su_answer[row][col] : "";
+    if (su.question[row][col] !== 0) {
+      cells[i].classList.add("filled");
     }
   }
 };
@@ -119,6 +151,57 @@ const hoverBg = (index) => {
 
 const resetBg = () => {
   cells.forEach((e) => e.classList.remove("hover"));
+};
+
+const checkErr = (value) => {
+  const addErr = (cell) => {
+    if (parseInt(cell.getAttribute("data-value")) === value) {
+      cell.classList.add("err");
+      cell.classList.add("cell-err");
+      setTimeout(() => {
+        cell.classList.remove("cell-err");
+      }, 500);
+    }
+  };
+
+  let index = selected_cell;
+
+  let row = Math.floor(index / CONSTANT.GRID_SIZE);
+  let col = index % CONSTANT.GRID_SIZE;
+
+  let box_start_row = row - (row % 3);
+  let box_start_col = col - (col % 3);
+
+  for (let i = 0; i < CONSTANT.BOX_SIZE; i++) {
+    for (let j = 0; j < CONSTANT.BOX_SIZE; j++) {
+      let cell = cells[9 * (box_start_row + i) + (box_start_col + j)];
+      cell.classList.add("hover");
+    }
+  }
+
+  let step = 9;
+  while (index - step >= 0) {
+    cells[index - step].classList.add("hover");
+    step += 9;
+  }
+
+  step = 9;
+  while (index + step < 81) {
+    cells[index - step].classList.add("hover");
+    step += 9;
+  }
+
+  step = 1;
+  while (index - step >= 9 * row) {
+    cells[index - step].classList.add("hover");
+    step += 1;
+  }
+
+  step = 1;
+  while (index + step < 9 * row + 9) {
+    cells[index + step].classList.add("hover");
+    step += 1;
+  }
 };
 
 const initCellsEvent = () => {

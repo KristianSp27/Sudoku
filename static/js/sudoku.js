@@ -72,7 +72,7 @@ const shuffleArray = (arr) => {
 };
 
 const isFullGrid = (grid) => {
-  return grid.every((row, index) => {
+  return grid.every((row, i) => {
     return row.every((value, j) => {
       return value !== CONSTANT.UNASSIGNED;
     });
