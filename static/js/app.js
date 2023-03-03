@@ -49,7 +49,16 @@ const getPlayerName = () => localStorage.getItem("player_name");
 
 const showTime = (seconds) => new Date(seconds * 1000).toISOString().substr(11, 8);
 
+const clearSudoku = () => {
+  for (let i = 0; i < Math.pow(CONSTANT.GRID_SIZE, 2); i++) {
+    cells[i].innerHTML = "";
+    cells[i].classList.remove("filled");
+    cells[i].classList.remove("selected");
+  }
+};
+
 const initSudoku = () => {
+  clearSudoku();
   su = sudokuGen(level);
   su_answer = [...su.question];
 
