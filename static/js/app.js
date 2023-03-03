@@ -59,6 +59,7 @@ const clearSudoku = () => {
 
 const initSudoku = () => {
   clearSudoku();
+  resetBg();
   su = sudokuGen(level);
   su_answer = [...su.question];
 
@@ -90,6 +91,50 @@ const hoverBg = (index) => {
       cells.classList.add("hover");
     }
   }
+
+  let step = 9;
+  while (index - step >= 0) {
+    cells[index - step].classList.add("hover");
+    step += 9;
+  }
+
+  step = 9;
+  while (index + step < 81) {
+    cells[index - step].classList.add("hover");
+    step += 9;
+  }
+
+  step = 1;
+  while (index - step >= 9 * row) {
+    cells[index - step].classList.add("hover");
+    step += 1;
+  }
+
+  step = 1;
+  while (index + step < 9 * row + 9) {
+    cells[index + step].classList.add("hover");
+    step += 1;
+  }
+};
+
+const resetBg = () => {
+  cells.forEach((e) => e.classList.remove("hover"));
+};
+
+initCellsEvent = () => {
+  cells.forEach((e, index) => {
+    e.addEventListener("click", () => {
+      if (!e.classList.contains("filled")) {
+        cells.forEach((e) => e.classList.remove("selected"));
+
+        selected_cell = index;
+        e.classList.remove("err");
+        e.classList.add("selected");
+        resetBg();
+        hoverBg();
+      }
+    });
+  });
 };
 
 const startGame = () => {
